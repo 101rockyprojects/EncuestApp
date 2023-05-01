@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDB56C"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".agregar">
+
+    <EditText
+        android:id="@+id/n_menores"
+        android:layout_width="330dp"
+        android:layout_height="32dp"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:fontFamily="@font/readexpro"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="#313638"
+        android:textColorHint="#FF5722"
+        android:textCursorDrawable="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/n_adultos"
+        android:layout_width="330dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:fontFamily="@font/readexpro"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="#313638"
+        android:textColorHint="#FF5722"
+        android:textCursorDrawable="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/readexpro"
+        android:text="Número de menores de edad:"
+        android:textColor="#313638"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spTv" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/readexpro"
+        android:text="Número de adultos:"
+        android:textColor="#313638"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/n_menores" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/readexpro"
+        android:text="Dirección de la vivienda:"
+        android:textColor="#313638"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/readexpro"
+        android:text="Número total de residentes:"
+        android:textColor="#313638"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/n_adultos" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="72dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/disabled_input"
+        android:fontFamily="@font/readexpro"
+        android:paddingTop="1dp"
+        android:paddingRight="15dp"
+        android:textAlignment="viewEnd"
+        android:textColor="#FFFFFF"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/n_adultos" />
+
+    <TextView
+        android:id="@+id/tv_fondo_email"
+        android:layout_width="415dp"
+        android:layout_height="155dp"
+        android:background="#313638"
+        android:textColor="#313638"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="49dp"
+        android:layout_height="53dp"
+        android:layout_gravity="left"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:width="40dp"
+        android:background="@drawable/arrow_back"
+        android:gravity="start|left"
+        android:maxWidth="40dp"
+        android:minWidth="40dp"
+        android:onClick="goback"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="230dp"
+        android:layout_height="83dp"
+        android:fontFamily="@font/readexpro"
+        android:paddingTop="30sp"
+        android:text="Encuesta   "
+        android:textAlignment="viewEnd"
+        android:textColor="#FFFFFF"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/barrio_name"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/readexpro"
+        android:textAlignment="viewEnd"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_fondo_email" />
+
+    <Button
+        android:id="@+id/bt_agregar"
+        android:layout_width="136dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#313638"
+        android:fontFamily="@font/readexpro"
+        android:text="Completar"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/direccion"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/readexpro"
+        android:text="Nombre encuestado:"
+        android:textColor="#313638"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fondo_email" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/readexpro"
+        android:text="Nombre del jefe del hogar:"
+        android:textColor="#313638"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/encuestado" />
+
+    <EditText
+        android:id="@+id/encuestado"
+        android:layout_width="330dp"
+        android:layout_height="32dp"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:fontFamily="@font/readexpro"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="#313638"
+        android:textColorHint="#FF5722"
+        android:textCursorDrawable="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/jefe_hogar"
+        android:layout_width="330dp"
+        android:layout_height="32dp"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:fontFamily="@font/readexpro"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="#313638"
+        android:textColorHint="#FF5722"
+        android:textCursorDrawable="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <Spinner
+        android:id="@+id/spTv"
+        android:layout_width="330dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/border_spinner_white"
+        android:spinnerMode="dialog"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jefe_hogar" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="45dp"
+        android:layout_height="28dp"
+        android:rotation="-90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.436"
+        app:srcCompat="@drawable/arrow_back"
+        tools:ignore="ImageContrastCheck" />
+
+    <EditText
+        android:id="@+id/direccion"
+        android:layout_width="330dp"
+        android:layout_height="75dp"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="#313638"
+        android:textCursorDrawable="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</android.support.constraint.ConstraintLayout>

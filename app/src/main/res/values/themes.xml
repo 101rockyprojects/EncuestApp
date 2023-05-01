@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.CRUDo" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#F09D51</item>
+        <item name="colorPrimaryDark">#F06543</item>
+        <item name="colorAccent">#313638</item>
+    </style>
+</resources>

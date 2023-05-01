@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EncuestApp</string>
+    <string name="ruta1">Ruta 1:</string>
+    <string name="ruta2">Ruta 2:</string>
+    <string name="ruta3">Ruta 3:</string>
+    <string name="todo">TODO</string>
+    <string name="keepLogin">Recordar mi cuenta</string>
+</resources>
