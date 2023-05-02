@@ -8,3 +8,4 @@ Design in Figma: https://www.figma.com/file/bRJ0yCf2MMKbR48KHzcgRm/AppEncuestas?
 Color Palette: https://coolors.co/f06543-e7e7e7-c4c3ba-313638-f09d51 <br>
 App Icon/Logo:<br> ![LogoApp](logoapp.png) <br>
 App Views:<br> ![Views (Login,Home,Register,Loading)](views.png)
+App Running on Android: <br> ![LoginView](Login.jpg) ![HomeView](Home.jpg) <br> ![RegistrationView](Register.jpg) ![LoadingView](Loading.jpg) <br> ![Logo](logoandroid.jpg)
