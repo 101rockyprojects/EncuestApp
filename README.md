@@ -6,5 +6,5 @@ CRUD functionality is split across multiple PHP files to handle queries and inse
 
 Design in Figma: https://www.figma.com/file/bRJ0yCf2MMKbR48KHzcgRm/AppEncuestas?node-id=0%3A1&t=8sws2rPMQwPQ7x4f-1 <br>
 Color Palette: https://coolors.co/f06543-e7e7e7-c4c3ba-313638-f09d51 <br>
-App Icon/Logo: ![LogoApp](logoapp.png) <br>
-App Views: ![Views (Login,Home,Register,Loading)](views.png)
+App Icon/Logo:<br> ![LogoApp](logoapp.png) <br>
+App Views:<br> ![Views (Login,Home,Register,Loading)](views.png)
