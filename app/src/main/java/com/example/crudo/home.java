@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class home extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
+    // Crear los objetos a utilizar
     TextView tv_ced, tv_nombre, tv_email, tv_gen;
     ArrayAdapter<String> adpB1, adpB2, adpB3;
     Spinner spB1,spB2,spB3;
@@ -46,7 +46,7 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        // Enlazar los objetos creados con los elementos de la vista
         tv_ced = findViewById(R.id.textced);
         tv_nombre = findViewById(R.id.textname);
         tv_email = findViewById(R.id.textemail);
@@ -62,8 +62,10 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
         chkBox1 = findViewById(R.id.checkB1);
         chkBox2 = findViewById(R.id.checkB2);
         chkBox3 = findViewById(R.id.checkB3);
-
-        String user_email = save(); /*recibiendo email de la vista anterior*/
+        
+        // Recibiendo email de la vista anterior
+        String user_email = save(); 
+        // Obtener el id del empleado con el correo que hizo login
         id = buscar_por_email("https://crudo-app.000webhostapp.com/search-app.php?email="+user_email+"");
         tv_email.setText(user_email);
 
@@ -76,7 +78,7 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
+    // Obtener los SharedPreferences
     private String save(){
         SharedPreferences pref = getSharedPreferences("keeplogin",Context.MODE_PRIVATE);
         boolean sesion = pref.getBoolean("login",false);
@@ -89,7 +91,8 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
         }
         return email_a_buscar;
     }
-
+    
+    // Imprimir los datos del usuario segun su correo
     private int buscar_por_email(String URL){
         JsonArrayRequest jsonar = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
@@ -103,6 +106,7 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
                         tv_nombre.setText(jso.getString("name"));
                         tv_gen.setText(jso.getString("genero"));
                         Log.d("Imprimir ids_rutas",id+" "+(id+5)+" "+(id+10));
+                        // Obtener las rutas que le corresponden al usuario dicha semana
                         traerBarrios("https://crudo-app.000webhostapp.com/search-barrios.php?id="+id+"",1);
                         traerBarrios("https://crudo-app.000webhostapp.com/search-barrios.php?id="+(id+5)+"",2);
                         traerBarrios("https://crudo-app.000webhostapp.com/search-barrios.php?id="+(id+10)+"",3);
@@ -122,6 +126,7 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
         rq.add(jsonar);
         return id;
     }
+    // Obtener la lista de barrios de la ruta del usuario
     public void traerBarrios(String URL,int ruta){
         JsonArrayRequest jsonar = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
@@ -131,8 +136,10 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
                     try {
                         jso = response.getJSONObject(i);
                         lista_barrios = jso.getString("lista_barrios");
+                        // Hacer un Array con los ids de los barrios separandolos por coma
                         String[] id_barrio = lista_barrios.split(",");
                         for (int j = 0; j < id_barrio.length; j++) {
+                            // Por cada barrio de ese Array hacer la búsqueda de su nombre mediante el id
                             imprimirBarrios("https://crudo-app.000webhostapp.com/search-barrio-by-id.php?id=" + id_barrio[j] + "",ruta);
                         }
 
@@ -151,6 +158,7 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
         RequestQueue rq = Volley.newRequestQueue(home.this);
         rq.add(jsonar);
     }
+    // Ingresar los nombres de los barrios en el Spinner que le corresponde
     public void imprimirBarrios(String URL,int ruta){
         JsonArrayRequest jsonar = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
@@ -161,14 +169,17 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
                         jso = response.getJSONObject(i);
                         String nuevoBarrio = jso.getString("nombre");
                         Log.d("Rutas", ruta+": "+nuevoBarrio);
+                        // Si el barrio es de la ruta 1 lo añade al Array
                         if(ruta==1) {
                             optR1 = Arrays.copyOf(optR1, optR1.length + 1);
                             optR1[optR1.length - 1] = nuevoBarrio;
                         } else {
+                            // Sino, si el barrio es de la ruta 2 lo añade al Array
                             if(ruta==2) {
                                 optR2 = Arrays.copyOf(optR2, optR2.length + 1);
                                 optR2[optR2.length - 1] = nuevoBarrio;
                             } else {
+                                // Sino, el barrio es de la ruta 3 lo añade al Array
                                 if(ruta==3){
                                     optR3 = Arrays.copyOf(optR3, optR3.length + 1);
                                     optR3[optR3.length-1] = nuevoBarrio;
@@ -180,15 +191,18 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
+                // Al terminar de recolectar los 5 barrios de la ruta 1 los añade al Spinner 1
                 Log.d("Lenght",optR1.length+" "+optR2.length+" "+optR3.length);
                 if (optR1.length == 5){
                     adpB1 = new ArrayAdapter<String>(home.this, android.R.layout.simple_spinner_item, optR1);
                     spB1.setAdapter(adpB1);
                 }
+                // Al terminar de recolectar los 5 barrios de la ruta 2 los añade al Spinner 2
                 if (optR2.length == 5){
                     adpB2 = new ArrayAdapter<String>(home.this, android.R.layout.simple_spinner_item, optR2);
                     spB2.setAdapter(adpB2);
                 }
+                // Al terminar de recolectar los 5 barrios de la ruta 3 los añade al Spinner 3
                 if (optR3.length == 5){
                     adpB3 = new ArrayAdapter<String>(home.this, android.R.layout.simple_spinner_item, optR3);
                     spB3.setAdapter(adpB3);
@@ -203,31 +217,39 @@ public class home extends AppCompatActivity implements AdapterView.OnItemSelecte
         RequestQueue rq = Volley.newRequestQueue(home.this);
         rq.add(jsonar);
     }
-
+    
+    // Guarda el nombre del barrio seleccionado y lo manda a la siguiente vista
     public void encuesta(View view){
         Intent intent = new Intent(getApplicationContext(),agregar.class);
+        // Si se seleccionaron los 3 Chexkbox
         if(chkBox1.isChecked() && chkBox2.isChecked() && chkBox3.isChecked()){
+            // Imprimimos al usuario que ya termino
             Toast.makeText(this, "Parece que ya acabaste con las rutas de esta semana. ¡Felicidades!", Toast.LENGTH_SHORT).show();
         } else {
             if(!chkBox1.isChecked()) {
+                // Si no esta chequeado el Checkbox 1 tomamos el barrio del Spinner 1
                 intent.putExtra("barrio",spB1.getSelectedItem().toString());
                 intent.putExtra("id_ruta",String.valueOf(0));
             } else {
                 if(!chkBox2.isChecked()) {
+                    // Si esta chequeado el Checkbox 1 y no esta chequeado el 2 tomamos el barrio del Spinner 2
                     intent.putExtra("barrio",spB2.getSelectedItem().toString());
                     intent.putExtra("id_ruta",String.valueOf(5));
                 } else {
                     if(!chkBox3.isChecked()) {
+                        // Si los Checkbox 1 y 2 estan chequeados tomamos el barrio del Spinner 3
                         intent.putExtra("barrio",spB3.getSelectedItem().toString());
                         intent.putExtra("id_ruta",String.valueOf(10));
                     }
                 }
             }
+            // Enviamos el id del empleado, el email y de que ruta es el barrio
             intent.putExtra("id_empleado",String.valueOf(id));
             intent.putExtra("user_email",tv_email.getText().toString());
             startActivity(intent);
         }
     }
+    // Cerrar sesion y volver al Login
     public void logout(View view){
         SharedPreferences pref = getSharedPreferences("keeplogin", Context.MODE_PRIVATE);
         pref.edit().clear().commit();
