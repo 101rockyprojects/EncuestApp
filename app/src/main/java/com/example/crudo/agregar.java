@@ -37,7 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class agregar extends AppCompatActivity {
-
+    // Creamos los objetos a utilizar
     TextView nombre_barrio, tv_total,email;
     EditText et_encuestado, et_jefe, et_n_menores,et_n_adultos,et_direccion;
     Button b_agregar;
@@ -50,7 +50,7 @@ public class agregar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar);
-
+        // Enlazamos los objetos creados con los elementos de la vista, recuperamos e imprimimos el email enviado de la anterior vista
         email = findViewById(R.id.tv_fondo_email);
         String user_email = save_email();
         email.setText(user_email);
@@ -68,15 +68,16 @@ public class agregar extends AppCompatActivity {
         et_n_adultos = findViewById(R.id.n_adultos);
         et_direccion = findViewById(R.id.direccion);
         tv_total = findViewById(R.id.total);
-
+        
+        // Calcular automaticamente el total de residentes
         et_n_menores.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-
+            
+            // Realizar la suma cada vez que se modifica el contenido de et_n_menores
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Realizar la suma cada vez que se modifica el contenido de et_n_menores
                 if(!et_n_adultos.getText().toString().isEmpty() && !et_n_menores.getText().toString().isEmpty()){
                     int number1 = Integer.parseInt(et_n_menores.getText().toString());
                     int number2 = Integer.parseInt(et_n_adultos.getText().toString());
@@ -95,9 +96,9 @@ public class agregar extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
+            // Realizar la suma cada vez que se modifica el contenido de et_n_adultos
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Realizar la suma cada vez que se modifica el contenido de et_n_adultos
                 if(!et_n_adultos.getText().toString().isEmpty() && !et_n_menores.getText().toString().isEmpty()){
                     int number1 = Integer.parseInt(et_n_menores.getText().toString());
                     int number2 = Integer.parseInt(et_n_adultos.getText().toString());
@@ -114,7 +115,7 @@ public class agregar extends AppCompatActivity {
 
         b_agregar = findViewById(R.id.bt_agregar);
 
-        
+        // Al darle al botón Agregar subir los datos a la BDD
         b_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,14 +126,15 @@ public class agregar extends AppCompatActivity {
             public void insertarDatos(String URL) {
                 final ProgressDialog progressDialog = new ProgressDialog(agregar.this);
                 progressDialog.setMessage("Cargando... \n Espera unos segundos :)");
-
+                // Guardamos lo que se ingreso en los EditText
                 String encuestado = et_encuestado.getText().toString();
                 String jefe = et_jefe.getText().toString();
                 String n_menores = et_n_menores.getText().toString();
                 String n_adultos = et_n_adultos.getText().toString();
                 String direc = et_direccion.getText().toString();
-
+                // Siempre que haya un campo sin haber completado
                 if(encuestado.isEmpty() || jefe.isEmpty() || n_adultos.isEmpty() || n_menores.isEmpty() || direc.isEmpty() || spTV.getSelectedItemPosition()==0){
+                    // Imprimir que se llenen todos los campos
                     Toast.makeText(agregar.this, "Ingresa todos los datos antes de continuar",Toast.LENGTH_SHORT).show();
                     return;
                 } else {
@@ -159,7 +161,7 @@ public class agregar extends AppCompatActivity {
                             progressDialog.dismiss();
                         }
                     }){
-
+                        // Obtener y mandar todos los datos por params y subirlo al archivo PHP que hace el INSERT en la BDD
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String,String> params = new HashMap<String,String>();
@@ -204,6 +206,7 @@ public class agregar extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }
+    // Limpiar los campos de la encuesta
     private void limpiar(){
         et_encuestado.setText("");
         et_jefe.setText("");
@@ -213,11 +216,13 @@ public class agregar extends AppCompatActivity {
         tv_total.setText("");
         et_direccion.setText("");
     }
+    // Obtener el barrio seleccionado de la vista anterior
     private String save(){
         Bundle extras = getIntent().getExtras();
         String barrio = extras.getString("barrio");
         return barrio;
     }
+    // Guardar email
     private String save_email(){
         SharedPreferences pref = getSharedPreferences("keeplogin", Context.MODE_PRIVATE);
         boolean sesion = pref.getBoolean("login",false);
@@ -230,6 +235,7 @@ public class agregar extends AppCompatActivity {
         }
         return email_a_buscar;
     }
+    // Devolverme al home al presionar un botón de la vista
     public void goback(View view){
         Toast.makeText(agregar.this, "Cancelando operación...",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(),home.class);
