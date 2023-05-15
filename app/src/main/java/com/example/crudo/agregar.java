@@ -133,7 +133,7 @@ public class agregar extends AppCompatActivity {
                 String n_adultos = et_n_adultos.getText().toString();
                 String direc = et_direccion.getText().toString();
                 // Siempre que haya un campo sin haber completado
-                if(encuestado.isEmpty() || jefe.isEmpty() || n_adultos.isEmpty() || n_menores.isEmpty() || direc.isEmpty() || spTV.getSelectedItemPosition()==0 || Integer.parseInt(tv_total.getText().toString)<=0){
+                if(encuestado.isEmpty() || jefe.isEmpty() || n_adultos.isEmpty() || n_menores.isEmpty() || direc.isEmpty() || spTV.getSelectedItemPosition()==0 || Integer.parseInt(tv_total.getText().toString())<=0){
                     // Imprimir que se llenen todos los campos
                     Toast.makeText(agregar.this, "Ingresa todos los datos antes de continuar",Toast.LENGTH_SHORT).show();
                     return;
