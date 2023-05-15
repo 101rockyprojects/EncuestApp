@@ -68,13 +68,13 @@ public class agregar extends AppCompatActivity {
         et_n_adultos = findViewById(R.id.n_adultos);
         et_direccion = findViewById(R.id.direccion);
         tv_total = findViewById(R.id.total);
-        
+
         // Calcular automaticamente el total de residentes
         et_n_menores.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-            
+
             // Realizar la suma cada vez que se modifica el contenido de et_n_menores
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -142,11 +142,16 @@ public class agregar extends AppCompatActivity {
                     StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            if (response.equalsIgnoreCase("Datos Actualizados Correctamente")) {
+                            if (!response.isEmpty()) {
                                 Toast.makeText(agregar.this, "Agregado correctamente", Toast.LENGTH_SHORT).show();
+                                et_encuestado.setText("");
+                                et_jefe.setText("");
+                                spTV.setSelection(0);
+                                et_n_menores.setText("");
+                                et_n_adultos.setText("");
+                                tv_total.setText("");
+                                et_direccion.setText("");
                                 progressDialog.dismiss();
-                                startActivity(new Intent(getApplicationContext(), home.class));
-                                finish();
                             } else {
                                 Log.d("WTF",response.toString());
                                 Toast.makeText(agregar.this, response, Toast.LENGTH_SHORT).show();
@@ -195,8 +200,6 @@ public class agregar extends AppCompatActivity {
 
                     requestQueue = Volley.newRequestQueue(agregar.this);
                     requestQueue.add(request);
-
-
                 }
             }
         });
@@ -205,16 +208,6 @@ public class agregar extends AppCompatActivity {
     public void onBackPressed(){
         super.onBackPressed();
         finish();
-    }
-    // Limpiar los campos de la encuesta
-    private void limpiar(){
-        et_encuestado.setText("");
-        et_jefe.setText("");
-        spTV.setSelection(0);
-        et_n_menores.setText("");
-        et_n_adultos.setText("");
-        tv_total.setText("");
-        et_direccion.setText("");
     }
     // Obtener el barrio seleccionado de la vista anterior
     private String save(){
