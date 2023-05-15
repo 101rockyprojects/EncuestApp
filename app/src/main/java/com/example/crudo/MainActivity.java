@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("usser_email",et_email.getText().toString());
             editor.putString("usser_password",et_pass.getText().toString());
             editor.putBoolean("login",true);
-
+            editor.commit();
     }
     // Recuperar los datos en caso de haber ingresado anteriormente con una cuenta
     private void recuperar(){
